@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.splash')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div onclick="populateForm()" class="panel-heading">
-                        <h1>Tip {{$name}}!</h1>
+                        <h5>Tip {{$name}}!</h5>
                     </div>
                     @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -24,7 +24,7 @@
                             {{ Form::hidden('uuid', $uuid) }}
 
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-xs-12">
                                     <div class="form-group">
                                         {{ Form::text('credit_card_number', null,
                                             array('required',
@@ -37,14 +37,14 @@
                                         ) }}
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-xs-6">
                                     <div class="form-group">
                                         {{ Form::selectMonth('exp_month', null, ['class' => 'form-control',
                                                   'id' => 'creditCardMonth',
                                                   'placeholder'=>'Exp Month', 'autocomplete' => 'cc-exp-month']) }}
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-xs-6">
                                     <div class="form-group">
                                         {{ Form::selectYear('exp_year', 2016, 2020, null, ['class' => 'form-control',
                                                      'id' => 'creditCardYear',
@@ -81,29 +81,47 @@
                                           'placeholder'=>'Billing Address 2')) }}
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::text('city', null,
-                                    array('class'=>'form-control',
-                                          'placeholder'=>'City')) }}
-                            </div>
-                            <div class="form-group">
-                                @include('shared.state')
-                            </div>
-                            <div class="form-group">
-                                {{ Form::text('postal_code', null,
-                                    array('class'=>'form-control',
-                                          'placeholder'=>'Zipcode')) }}
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <div class="form-group">
+                                        {{ Form::text('city', null,
+                                            array('class'=>'form-control',
+                                                  'placeholder'=>'City')) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6">
+                                    <div class="form-group">
+                                        @include('shared.state')
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-6">
+                                    <div class="form-group">
+                                        {{ Form::text('postal_code', null,
+                                            array('class'=>'form-control',
+                                                  'placeholder'=>'Zipcode')) }}
+                                    </div>
+                                </div>
                             </div>
                             {{ Form::hidden('tip_amount', null, ['id' => 'tip_amount']) }}
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="text-center">
+                                <div class="col-lg-3 col-xs-3">
+                                    <div class="form-group">
                                         <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 100; this.form.submit()">$1</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-3">
+                                    <div class="form-group">
                                         <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 200; this.form.submit()">$2</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-3">
+                                    <div class="form-group">
                                         <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 500; this.form.submit()">$5</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-3">
+                                    <div class="form-group">
                                         <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 1000; this.form.submit()">$10</button>
-                                        <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 2000; this.form.submit()">$20</button>
                                     </div>
                                 </div>
                             </div>

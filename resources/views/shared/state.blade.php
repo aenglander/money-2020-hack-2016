@@ -54,5 +54,6 @@ Form::select('state',array(
 ) ,
         null,
         array(
-                'class'       => 'form-control'
+                'class'       => 'form-control',
+                'placeholder' => 'State',
         )) !!}
