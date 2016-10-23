@@ -5,7 +5,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h1>Tip Me!</h1></div>
+                    <div onclick="populateForm()" class="panel-heading">
+                        <h1>Tip Me!</h1>
+                    </div>
                     @if(Session::has('message'))
                         <div class="alert alert-info">
                             {{Session::get('message')}}
@@ -18,91 +20,96 @@
                             @endforeach
                         </ul>
 
-                        {!! Form::open(array('route' => 'pay_performer', 'class' => 'form')) !!}
-                            {!! Form::hidden('uuid', $uuid) !!}
-                        <div class="form-group">
-                        </div>
+                        {{ Form::open(array('route' => 'pay_performer', 'class' => 'form')) }}
+                            {{ Form::hidden('uuid', $uuid) }}
 
                         <div class="form-group">
-                            {!! Form::label('First Name') !!}
-                            {!! Form::text('first_name', null,
+                            {{ Form::text('first_name', null,
                                 array('required',
                                       'class'=>'form-control',
-                                      'placeholder'=>'John')) !!}
+                                      'placeholder'=>'First Name')) }}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('Last Name') !!}
-                            {!! Form::text('last_name', null,
+                            {{ Form::text('last_name', null,
                                 array('required',
                                       'class'=>'form-control',
-                                      'placeholder'=>'Smith')) !!}
+                                      'placeholder'=>'Last Name')) }}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('Your E-mail Address') !!}
-                            {!! Form::text('email', null,
+                            {{ Form::text('card_number', null,
                                 array('required',
-                                      'class'=>'form-control',
-                                      'placeholder'=>'Your e-mail address')) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('Card Number') !!}
-                            {!! Form::text('card_number', '5102589999999939',
-                                array('required',
-                                'min' => '16',
+                                'min' => '15',
                                 'max' => '16',
                                       'class'=>'form-control',
-                                      'placeholder'=>'5102589999999939')) !!}
+                                      'placeholder'=>'Card Number')) }}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('Address Line 1') !!}
-                            {!! Form::text('address_1', null,
+                            {{ Form::selectYear('exp_year', 2016, 2020, null, ['class' => 'form-control',
+                                      'placeholder'=>'Exp Year']) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::selectMonth('exp_month', null, ['class' => 'form-control',
+                                      'placeholder'=>'Exp Month']) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::text('address_1', null,
                                 array('required',
                                       'class'=>'form-control',
-                                      'placeholder'=>'123 Main St.')) !!}
+                                      'placeholder'=>'Billing Address')) }}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('Address Line 2') !!}
-                            {!! Form::text('address_2', null,
+                            {{ Form::text('address_2', null,
                                 array('class'=>'form-control',
-                                      'placeholder'=>'Apt #D-123')) !!}
+                                      'placeholder'=>'Billing Address 2')) }}
                         </div>
 
+                        <div class="form-group">
+                            {{ Form::text('city', null,
+                                array('class'=>'form-control',
+                                      'placeholder'=>'City')) }}
+                        </div>
                         <div class="form-group">
                             @include('shared.state')
                         </div>
-
                         <div class="form-group">
-                            {!! Form::label('Exp Year') !!}
-                            {!! Form::selectYear('exp_year', 2016, 2020, 2017, ['class' => 'form-control']) !!}
+                            {{ Form::text('postal_code', null,
+                                array('class'=>'form-control',
+                                      'placeholder'=>'Zipcode')) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::number('tip_amount', null,
+                                array('class'=>'form-control',
+                                'min' => '1',
+                                'step' => 'any',
+                                      'placeholder'=>'Tip Amount')) }}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('Exp Month') !!}
-                            {!! Form::selectMonth('exp_month', null, ['class' => 'form-control']) !!}
+                            {{ Form::submit('Send Tip!',
+                              array('class'=>'btn btn-primary')) }}
                         </div>
+                        {{ Form::close() }}
+                        <script>
+                            function populateForm() {
+                                document.getElementsByName('first_name')[0].value = "Jack";
+                                document.getElementsByName('last_name')[0].value = "Smith";
+                                document.getElementsByName('card_number')[0].value = "5102589999999939";
+                                document.getElementsByName('exp_year')[0].value = "2017";
+                                document.getElementsByName('exp_month')[0].value = "8";
+                                document.getElementsByName('address_1')[0].value = "123 Test St.";
+                                document.getElementsByName('address_2')[0].value = "Apt # 3D";
+                                document.getElementsByName('city')[0].value = "Las Vegas";
+                                document.getElementsByName('state')[0].value = "NV";
+                                document.getElementsByName('postal_code')[0].value = "89123";
+                                document.getElementsByName('tip_amount')[0].value = "5.00";
+                            }
+                        </script>
 
-                        <div class="form-group">
-                            {!! Form::label('Card Type') !!}
-                            {!! Form::select('card_type', array('CREDIT' => 'Credit', 'DEBIT' => 'Debit', 'PREPAID' => 'Pre-paid'), 'CREDIT', ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('Your Message') !!}
-                            {!! Form::textarea('message', null,
-                                array('required',
-                                      'class'=>'form-control',
-                                      'placeholder' => 'Dude, your skateboard skills are hella cray brah!')) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::submit('Send Tip!',
-                              array('class'=>'btn btn-primary')) !!}
-                        </div>
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

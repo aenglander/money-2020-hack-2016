@@ -12,7 +12,9 @@
                         </div>
                     @endif
                     <div class="panel-body">
-                        {!! $paymentStatus !!}
+                        <h3>{!! $paymentMessage !!}</h3>
+                        <b>Payment ID:</b> {{ $paymentId }}
+                        <b>Payment Status:</b> {{ $paymentStatus }}
                     </div>
                 </div>
             </div>

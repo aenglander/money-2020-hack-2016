@@ -26,7 +26,6 @@ class PerformerFormRequest extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'card_type' => 'required',
             'card_number' => 'required',
             'address_1' => 'required',
             'address_2' => 'required',
@@ -34,8 +33,6 @@ class PerformerFormRequest extends FormRequest
             'postal_code' => 'required',
             'exp_year' => 'required',
             'exp_month' => 'required',
-            'email' => 'required|email',
-//            'message' => 'required',
         ];
     }
 }

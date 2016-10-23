@@ -1,4 +1,3 @@
-{!! Form::label('State') !!}
 {!!
 Form::select('state',array(
         'AL'=>'Alabama',
