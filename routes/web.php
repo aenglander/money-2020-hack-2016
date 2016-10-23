@@ -29,5 +29,3 @@ Route::get('performer/{uuid}', 'PerformerController@show')->name('performer_prof
 Route::post('performer',
     ['as' => 'pay_performer', 'uses' => 'PerformerController@pay']);
 
-Route::get('/qrcode', 'PerformerQrCodeController@index');
-

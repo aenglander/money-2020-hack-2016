@@ -8,10 +8,18 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <h3>Quick Pay QR Code</h3>
+                    <div id="qrcode"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="/js/qrcode.js"></script>
+    <script language="JavaScript">
+        new QRCode(document.getElementById('qrcode'), "{{$url}}");
+    </script>
 @endsection
