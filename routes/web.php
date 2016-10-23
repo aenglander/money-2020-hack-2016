@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/qrcode', 'PerformerQrCodeController@index');
+
+Route::get('/performer/{uuid}', function($uuid) {
+    return $uuid;
+})->name('performer_profile_get');
