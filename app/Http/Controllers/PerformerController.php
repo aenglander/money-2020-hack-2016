@@ -40,7 +40,7 @@ class PerformerController extends Controller
             $acctRef,
             $userFirstName,
             $userLastName,
-            $performerFormRequest->get('postal_code'));
+            $performerFormRequest->get('tip_amount'));
 
         if ($response) {
             $paymentStatus=$response->get("transfer.transaction_history.data.transaction.status");

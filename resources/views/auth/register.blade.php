@@ -1,12 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+
+        html, body {
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+            background:
+                    linear-gradient(
+                            rgba(255, 255, 255, 0.8),
+                            rgba(255, 255, 255, 0.8)
+                    ),
+                    url({{asset('images/register-background-sm.jpg')}}) no-repeat   center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .panel {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
+                    <p>Upon registration, you will receive QR code stickers & your new card in the mail to receive payments.</p>
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 

@@ -17,7 +17,7 @@
                             rgba(255, 255, 255, 0.8),
                             rgba(255, 255, 255, 0.8)
                     ),
-                    url({{asset('images/background.jpeg')}}) no-repeat   center center fixed;
+                    url({{asset('images/background-sm.jpg')}}) no-repeat   center center fixed;
                                          -webkit-background-size: cover;
                                          -moz-background-size: cover;
                                          -o-background-size: cover;

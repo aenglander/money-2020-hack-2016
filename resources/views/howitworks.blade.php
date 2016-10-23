@@ -1,11 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+
+        html, body {
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+            background:
+                    linear-gradient(
+                            rgba(255, 255, 255, 0.8),
+                            rgba(255, 255, 255, 0.8)
+                    ),
+                    url({{asset('images/background-howitworks-sm.jpg')}}) no-repeat   center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .panel {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">How It Works</div>
+                    <div class="panel-heading"><h1>How It Works</h1></div>
                     <div class="panel-body">
                         <h3 class="center-block">Step 1 - Free Sign Up</h3>
                         <p>Fill out our easy to use member registration form.</p>
