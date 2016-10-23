@@ -12,6 +12,7 @@
 */
 
 \Illuminate\Support\Facades\Request::setTrustedProxies(['127.0.0.1']);
+\Illuminate\Support\Facades\URL::forceSchema('https');
 
 Route::get('/', function () {
     return view('welcome');
