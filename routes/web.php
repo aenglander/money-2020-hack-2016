@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/how-it-works', function () {
+    return view('howitworks');
+})->name('how_it_works');
 
 Auth::routes();
 
