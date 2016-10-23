@@ -36,7 +36,12 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <div style="display: inline-block;">
+                            <div style=" float: left;">
+                            <img id="main-logo" style="margin-top: -5px;" class="img-responsive" src="{{asset('images/logo-icon.png')}}">
+                            </div>
+                            <div style=" float: left; margin-left: 10px;">{{ config('app.name', 'Laravel') }}</div>
+                        </div>
                     </a>
                 </div>
 

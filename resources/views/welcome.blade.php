@@ -70,7 +70,8 @@
     </style>
     <div class="content">
         <div class="title m-b-md">
-            Performer Pay
+            <b>Performer Pay</b>
+            <img id="logo" class="img-responsive center-block" style="display: none;" src="{{asset('images/logo.png')}}">
         </div>
         <div class="m-b-md">
             <h3>The easy way to get tipped!</h3>
@@ -79,5 +80,8 @@
         <a href="{{ url('/register') }}" class="btn btn-default btn-lg" role="button">Get Paid</a>
         <a href="{{ url('/login') }}" class="btn btn-default btn-lg" role="button">Existing Members</a>
     </div>
+    <script>
+        $( "#logo" ).fadeIn(2000);
+    </script>
 @endsection
 
