@@ -11,6 +11,8 @@
 |
 */
 
+\Illuminate\Support\Facades\Request::setTrustedProxies(['127.0.0.1']);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,3 +30,4 @@ Route::post('performer',
     ['as' => 'pay_performer', 'uses' => 'PerformerController@pay']);
 
 Route::get('/qrcode', 'PerformerQrCodeController@index');
+

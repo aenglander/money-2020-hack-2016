@@ -27,33 +27,40 @@
                             {{ Form::text('first_name', null,
                                 array('required',
                                       'class'=>'form-control',
-                                      'placeholder'=>'First Name')) }}
+                                      'placeholder'=>'First Name',
+                                      'autocomplete' => 'cc-given-name')) }}
                         </div>
 
                         <div class="form-group">
                             {{ Form::text('last_name', null,
                                 array('required',
                                       'class'=>'form-control',
-                                      'placeholder'=>'Last Name')) }}
+                                      'placeholder'=>'Last Name',
+                                      'autocomplete' => 'cc-family-name')) }}
                         </div>
 
                         <div class="form-group">
-                            {{ Form::text('card_number', null,
+                            {{ Form::text('credit_card_number', null,
                                 array('required',
-                                'min' => '15',
-                                'max' => '16',
-                                      'class'=>'form-control',
-                                      'placeholder'=>'Card Number')) }}
+                                    'min' => '15',
+                                    'max' => '16',
+                                    'id' => 'cardNumber',
+                                    'class'=>'form-control',
+                                    'placeholder'=>'Card Number',
+                                    'autocomplete' => 'cc-number')
+                            ) }}
                         </div>
 
                         <div class="form-group">
                             {{ Form::selectYear('exp_year', 2016, 2020, null, ['class' => 'form-control',
-                                      'placeholder'=>'Exp Year']) }}
+                                     'id' => 'creditCardYear',
+                                      'placeholder'=>'Exp Year', 'autocomplete' => 'cc-exp-year']) }}
                         </div>
 
                         <div class="form-group">
                             {{ Form::selectMonth('exp_month', null, ['class' => 'form-control',
-                                      'placeholder'=>'Exp Month']) }}
+                                      'id' => 'creditCardMonth',
+                                      'placeholder'=>'Exp Month', 'autocomplete' => 'cc-exp-month']) }}
                         </div>
 
                         <div class="form-group">
@@ -98,7 +105,7 @@
                             function populateForm() {
                                 document.getElementsByName('first_name')[0].value = "Jack";
                                 document.getElementsByName('last_name')[0].value = "Smith";
-                                document.getElementsByName('card_number')[0].value = "5102589999999939";
+                                document.getElementsByName('credit_card_number')[0].value = "5102589999999939";
                                 document.getElementsByName('exp_year')[0].value = "2017";
                                 document.getElementsByName('exp_month')[0].value = "8";
                                 document.getElementsByName('address_1')[0].value = "123 Test St.";

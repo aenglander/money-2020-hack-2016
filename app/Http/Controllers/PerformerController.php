@@ -27,7 +27,7 @@ class PerformerController extends Controller
         $response = $this->paymentService->makePayment(
             $performerFormRequest->get('first_name'),
             $performerFormRequest->get('last_name'),
-            $performerFormRequest->get('card_number'),
+            $performerFormRequest->get('credit_card_number'),
             $performerFormRequest->get('exp_year'),
             $performerFormRequest->get('exp_month'),
             $performerFormRequest->get('address_1'),

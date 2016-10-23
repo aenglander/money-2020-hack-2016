@@ -60,14 +60,16 @@ class PaymentService
         $map->set("payment_transfer.sender.last_name", $lastName);
         $map->set("payment_transfer.sender.nationality", "USA");
         $map->set("payment_transfer.sender.address.line1", $address1);
-        $map->set("payment_transfer.sender.address.line2", $address2);
+        if ($address2) {
+            $map->set("payment_transfer.sender.address.line2", $address2);
+        }
         $map->set("payment_transfer.sender.address.city", $city);
         $map->set("payment_transfer.sender.address.country_subdivision", $state);
         $map->set("payment_transfer.sender.address.postal_code", $zipcode);
         $map->set("payment_transfer.sender.address.country", "USA");
         $map->set("payment_transfer.recipient_account_uri", sprintf('acct-ref:%s', $acctRef));
         $map->set("payment_transfer.recipient.first_name", $userFirstName);
-        $map->set("payment_transfer.recipient.middle_name", $userLastName);
+        $map->set("payment_transfer.recipient.last_name", $userLastName);
         $map->set("payment_transfer.payment_origination_country", "USA");
         $map->set("payment_transfer.sanction_screening_override", " false ");
         $map->set("payment_transfer.statement_descriptor", "P2P*PERFPAY");
