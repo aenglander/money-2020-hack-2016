@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\PaymentService;
 
 use App\Http\Requests;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class PerformerController extends Controller
 {
@@ -17,7 +19,7 @@ class PerformerController extends Controller
     }
 
     public function show($uuid) {
-        return view('performer.show', ['uuid' => $uuid]);
+        return view('performer.show', ['uuid' => $uuid, 'name' => User::where('uuid', '=', $uuid)->firstOrFail()->stage_name]);
     }
 
     public function pay(Requests\PerformerFormRequest $performerFormRequest) {

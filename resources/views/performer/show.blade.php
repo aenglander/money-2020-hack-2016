@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div onclick="populateForm()" class="panel-heading">
-                        <h1>Tip Me!</h1>
+                        <h1>Tip {{$name}}!</h1>
                     </div>
                     @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -23,83 +23,91 @@
                         {{ Form::open(array('route' => 'pay_performer', 'class' => 'form')) }}
                             {{ Form::hidden('uuid', $uuid) }}
 
-                        <div class="form-group">
-                            {{ Form::text('first_name', null,
-                                array('required',
-                                      'class'=>'form-control',
-                                      'placeholder'=>'First Name',
-                                      'autocomplete' => 'cc-given-name')) }}
-                        </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        {{ Form::text('credit_card_number', null,
+                                            array('required',
+                                                'min' => '15',
+                                                'max' => '16',
+                                                'id' => 'cardNumber',
+                                                'class'=>'form-control',
+                                                'placeholder'=>'Card Number',
+                                                'autocomplete' => 'cc-number')
+                                        ) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        {{ Form::selectMonth('exp_month', null, ['class' => 'form-control',
+                                                  'id' => 'creditCardMonth',
+                                                  'placeholder'=>'Exp Month', 'autocomplete' => 'cc-exp-month']) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        {{ Form::selectYear('exp_year', 2016, 2020, null, ['class' => 'form-control',
+                                                     'id' => 'creditCardYear',
+                                                      'placeholder'=>'Exp Year', 'autocomplete' => 'cc-exp-year']) }}
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            {{ Form::text('last_name', null,
-                                array('required',
-                                      'class'=>'form-control',
-                                      'placeholder'=>'Last Name',
-                                      'autocomplete' => 'cc-family-name')) }}
-                        </div>
+                            <div class="form-group">
+                                {{ Form::text('first_name', null,
+                                    array('required',
+                                          'class'=>'form-control',
+                                          'placeholder'=>'First Name',
+                                          'autocomplete' => 'cc-given-name')) }}
+                            </div>
 
-                        <div class="form-group">
-                            {{ Form::text('credit_card_number', null,
-                                array('required',
-                                    'min' => '15',
-                                    'max' => '16',
-                                    'id' => 'cardNumber',
-                                    'class'=>'form-control',
-                                    'placeholder'=>'Card Number',
-                                    'autocomplete' => 'cc-number')
-                            ) }}
-                        </div>
+                            <div class="form-group">
+                                {{ Form::text('last_name', null,
+                                    array('required',
+                                          'class'=>'form-control',
+                                          'placeholder'=>'Last Name',
+                                          'autocomplete' => 'cc-family-name')) }}
+                            </div>
 
-                        <div class="form-group">
-                            {{ Form::selectYear('exp_year', 2016, 2020, null, ['class' => 'form-control',
-                                     'id' => 'creditCardYear',
-                                      'placeholder'=>'Exp Year', 'autocomplete' => 'cc-exp-year']) }}
-                        </div>
+                            <div class="form-group">
+                                {{ Form::text('address_1', null,
+                                    array('required',
+                                          'class'=>'form-control',
+                                          'placeholder'=>'Billing Address')) }}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::text('address_2', null,
+                                    array('class'=>'form-control',
+                                          'placeholder'=>'Billing Address 2')) }}
+                            </div>
 
-                        <div class="form-group">
-                            {{ Form::selectMonth('exp_month', null, ['class' => 'form-control',
-                                      'id' => 'creditCardMonth',
-                                      'placeholder'=>'Exp Month', 'autocomplete' => 'cc-exp-month']) }}
-                        </div>
+                            <div class="form-group">
+                                {{ Form::text('city', null,
+                                    array('class'=>'form-control',
+                                          'placeholder'=>'City')) }}
+                            </div>
+                            <div class="form-group">
+                                @include('shared.state')
+                            </div>
+                            <div class="form-group">
+                                {{ Form::text('postal_code', null,
+                                    array('class'=>'form-control',
+                                          'placeholder'=>'Zipcode')) }}
+                            </div>
+                            {{ Form::hidden('tip_amount', null, ['id' => 'tip_amount']) }}
 
-                        <div class="form-group">
-                            {{ Form::text('address_1', null,
-                                array('required',
-                                      'class'=>'form-control',
-                                      'placeholder'=>'Billing Address')) }}
-                        </div>
-                        <div class="form-group">
-                            {{ Form::text('address_2', null,
-                                array('class'=>'form-control',
-                                      'placeholder'=>'Billing Address 2')) }}
-                        </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="text-center">
+                                        <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 100; this.form.submit()">$1</button>
+                                        <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 200; this.form.submit()">$2</button>
+                                        <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 500; this.form.submit()">$5</button>
+                                        <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 1000; this.form.submit()">$10</button>
+                                        <button class="btn btn-default btn-lg" onclick="document.getElementById('tip_amount').value = 2000; this.form.submit()">$20</button>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            {{ Form::text('city', null,
-                                array('class'=>'form-control',
-                                      'placeholder'=>'City')) }}
-                        </div>
-                        <div class="form-group">
-                            @include('shared.state')
-                        </div>
-                        <div class="form-group">
-                            {{ Form::text('postal_code', null,
-                                array('class'=>'form-control',
-                                      'placeholder'=>'Zipcode')) }}
-                        </div>
-                        <div class="form-group">
-                            {{ Form::number('tip_amount', null,
-                                array('class'=>'form-control',
-                                'min' => '1',
-                                'step' => 'any',
-                                      'placeholder'=>'Tip Amount')) }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ Form::submit('Send Tip!',
-                              array('class'=>'btn btn-primary')) }}
-                        </div>
                         {{ Form::close() }}
                         <script>
                             function populateForm() {

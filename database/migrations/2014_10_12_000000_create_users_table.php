@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->uuid('uuid')->unique();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('stage_name')->nullable();
             $table->string('address_1');
             $table->string('address_2')->nullable();
             $table->string('city');

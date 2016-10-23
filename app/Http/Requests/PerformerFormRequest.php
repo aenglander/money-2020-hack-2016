@@ -28,7 +28,6 @@ class PerformerFormRequest extends FormRequest
             'last_name' => 'required',
             'credit_card_number' => 'required',
             'address_1' => 'required',
-            'address_2' => 'optional',
             'state' => 'required',
             'postal_code' => 'required',
             'exp_year' => 'required',

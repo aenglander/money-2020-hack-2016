@@ -38,6 +38,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('stage_name') ? ' has-error' : '' }}">
+                            <label for="stage_name" class="col-md-4 control-label">Stage Name</label>
+
+                            <div class="col-md-6">
+                                <input id="stage_name" type="text" class="form-control" name="stage_name" value="{{ old('stage_name') }}"  autofocus>
+
+                                @if ($errors->has('stage_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->last('stage_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('address_1') ? ' has-error' : '' }}">
                             <label for="address_1" class="col-md-4 control-label">Address Line 1</label>
 

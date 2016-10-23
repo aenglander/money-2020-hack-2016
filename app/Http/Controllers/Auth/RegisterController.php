@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,6 +51,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
+            'stage_name' => 'max:255',
             'address_1' => 'required|max:255',
             'city' => 'required|max:255',
             'state' => 'required|max:2',
@@ -70,6 +72,7 @@ class RegisterController extends Controller
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
+            'stage_name' => isset($data['stage_name']) ? $data['stage_name'] : $data['first_name'],
             'address_1' => $data['address_1'],
             'address_2' => $data['address_2'],
             'city' => $data['city'],
