@@ -23,7 +23,7 @@ $map->set("payment_transfer.transfer_reference", "789dfgs789dfg89".mt_rand(1,100
 $map->set("payment_transfer.payment_type", "P2P");
 $map->set("payment_transfer.funding_source[0]", "CREDIT");
 $map->set("payment_transfer.funding_source[1]", "DEBIT");
-$map->set("payment_transfer.amount", "4");
+$map->set("payment_transfer.amount", "400");
 $map->set("payment_transfer.currency", "USD");
 $map->set("payment_transfer.sender_account_uri", "pan:5102589999999939;exp=2017-08");
 $map->set("payment_transfer.sender.first_name", "John");
