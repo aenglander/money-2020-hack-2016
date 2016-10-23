@@ -1,11 +1,13 @@
 @extends('layouts.splash')
 
-@section('content')
+@section('styles')
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
     <style>
+        #app {
+            min-height: 100%;
+        }
+
         html, body {
             color: #636b6f;
             font-family: 'Raleway', sans-serif;
@@ -14,14 +16,14 @@
             margin: 0;
             background:
                     linear-gradient(
-                            rgba(255, 255, 255, 0.8),
-                            rgba(255, 255, 255, 0.8)
+                            rgba(0, 0, 0, 0.65),
+                            rgba(0, 0, 0, 0.65)
                     ),
-                    url({{asset('images/background-sm.jpg')}}) no-repeat   center center fixed;
-                                         -webkit-background-size: cover;
-                                         -moz-background-size: cover;
-                                         -o-background-size: cover;
-                                         background-size: cover;
+            url({{asset('images/home-background-sm.jpg')}}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
 
         .full-height {
@@ -45,12 +47,17 @@
         }
 
         .content {
+            font-weight: bolder;
+            color: #fff;
+            padding-top: 20%;
             text-align: center;
-
+            vertical-align: middle;
+            margin: auto;
         }
 
         .title {
             font-size: 4em;
+            text-shadow: 0 0 20px #000;
         }
 
         .links > a {
@@ -67,21 +74,39 @@
             margin-bottom: 30px;
         }
 
+        .tagline {
+            font-weight: bolder;
+            text-shadow: 0 0 20px #000;
+        }
+
+        .tighty-whitey {
+            color: #ffffff;
+            font-weight: bolder;
+            font-size: 2em;
+            padding: 1em;
+        }
+        .jackie-blacky {
+            color: #090909;
+            font-weight: bold;
+            font-size: 2em;
+        }
     </style>
+@endsection
+
+@section('content')
+    <a href="{{ url('/how-it-works') }}" class="tighty-whitey" style="float: left;">How It Works</a>
+    <a href="{{ url('/login') }}" class="tighty-whitey" style="float: right;">Existing Members</a>
     <div class="content">
         <div class="title m-b-md">
-            <b>Performer Pay</b>
-            <img id="logo" class="img-responsive center-block" style="display: none;" src="{{asset('images/logo.png')}}">
+            <div>{{ config('app.name', 'Laravel') }}</div>
         </div>
         <div class="m-b-md">
-            <h3>The easy way to get tipped!</h3>
+            <h2 class="tagline">The easy way to get tipped!</h2>
         </div>
-        <a href="{{ url('/how-it-works') }}" class="btn btn-default btn-lg" role="button">How It Works</a>
-        <a href="{{ url('/register') }}" class="btn btn-default btn-lg" role="button">Get Paid</a>
-        <a href="{{ url('/login') }}" class="btn btn-default btn-lg" role="button">Existing Members</a>
+        <a href="{{ url('/register') }}" class="btn btn-success btn-lg jackie-blacky" role="button">Start Getting Paid</a>
     </div>
     <script>
-        $( "#logo" ).fadeIn(2000);
+        $("#logo").fadeIn(2000);
     </script>
 @endsection
 

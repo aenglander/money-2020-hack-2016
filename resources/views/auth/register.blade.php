@@ -11,8 +11,8 @@
             margin: 0;
             background:
                     linear-gradient(
-                            rgba(255, 255, 255, 0.8),
-                            rgba(255, 255, 255, 0.8)
+                            rgba(0, 0, 0, 0.65),
+                            rgba(0, 0, 0, 0.65)
                     ),
                     url({{asset('images/register-background-sm.jpg')}}) no-repeat   center center fixed;
             -webkit-background-size: cover;

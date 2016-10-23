@@ -9,10 +9,11 @@
             font-weight: 100;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(
-                    rgba(255, 255, 255, 0.8),
-                    rgba(255, 255, 255, 0.8)
-            ),
+            background:
+                    linear-gradient(
+                            rgba(0, 0, 0, 0.65),
+                            rgba(0, 0, 0, 0.65)
+                    ),
             url({{asset('images/dashboard-background-sm.jpg')}}) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
